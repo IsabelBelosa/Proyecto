@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 C:\Users\Usuario\Desktop\Proyecto
-=======
-C:\Users\isabe\OneDrive\Escritorio\Proyecto
->>>>>>> Isabel

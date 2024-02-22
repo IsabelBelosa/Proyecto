@@ -26,5 +26,12 @@ public class Rotacion : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x,2.0f,transform.position.z);
         Instantiate(particulas,pos,particulas.transform.rotation);
         moneda.Play();
+        StartCoroutine("TiempoParticulas");
+    }
+
+    public IEnumerator TiempoParticulas()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

@@ -81,10 +81,10 @@ public class JugadorBola : MonoBehaviour
         }
         
         float ran2 =  Random.Range(0f,1f);
-        if(ran2 < 0.3f) //Cada suelo que se genera tiene un 30% de posibilidades de poseer una moneda
+        if(ran2 < 0.5f) //Cada suelo que se genera tiene un 30% de posibilidades de poseer una moneda
         { 
             ran2 = Random.Range(-3f,3f);
-            Instantiate(tronco,new Vector3(ValX + ran2,0.5f,ValZ + ran2), Quaternion.identity);
+            Instantiate(tronco,new Vector3(ValX + ran2,1.5f,ValZ + ran2), Quaternion.identity);
         }
     }
 
@@ -92,27 +92,27 @@ public class JugadorBola : MonoBehaviour
     {
         if (DireccionActual == Vector3.forward)
         {
-            DireccionActual = Vector3.right;
+            DireccionActual =  Vector3.right;
         }
         else
         {
-            DireccionActual = Vector3.forward;
+            DireccionActual =  Vector3.forward;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.CompareTag("Premio"))
-       {
-        TotalMonedas++;
-        Contador.text = "Contador =" + TotalMonedas + "/7";
-        Destroy(other.gameObject);
-        if (TotalMonedas == 7)
+        if(other.gameObject.CompareTag("Premio"))
         {
-            SceneManager.LoadScene("2Nivel");
+        TotalMonedas++;
+        Contador.text = "Contador =" + TotalMonedas + "/5";
+        Destroy(other.gameObject);
+        if (TotalMonedas == 5)
+        {
+            SceneManager.LoadScene("Nivel2");
         }
-       }
-       if(other.gameObject.CompareTag("tronco"))
+        }
+        if(other.gameObject.CompareTag("tronco"))
         {
             Debug.Log("He chocado con un tronco");
             SceneManager.LoadScene("HasPerdido");
