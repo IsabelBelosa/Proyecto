@@ -65,7 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CuentaAtras.cs" />
+    <Compile Include="Assets\Scripts\Rotacion.cs" />
     <Compile Include="Assets\Scripts\JugadorBola.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DavePixel\ReadMe!.rtf.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
