@@ -77,14 +77,15 @@ public class JugadorBola : MonoBehaviour
         if(ran < 1f) //Cada suelo que se genera tiene un 70% de posibilidades de poseer una moneda
         {
             ran = Random.Range(-2f,2f);
-            Instantiate(moneda,new Vector3(ValX + ran,1.5f,ValZ + ran), Quaternion.identity);
+            Instantiate(moneda,new Vector3(ValX + ran,1.5f,ValZ + aleatorio), Quaternion.identity);
         }
         
         float ran2 =  Random.Range(0f,1f);
-        if(ran2 < 0.5f) //Cada suelo que se genera tiene un 30% de posibilidades de poseer una moneda
+        if(ran2 < 0.5f) //Cada suelo que se genera tiene un 50% de posibilidades de poseer una moneda
         { 
             ran2 = Random.Range(-3f,3f);
-            Instantiate(tronco,new Vector3(ValX + ran2,1.5f,ValZ + ran2), Quaternion.identity);
+            tronco = Instantiate(tronco,new Vector3(ValX + ran2,0.8f,ValZ + ran2), Quaternion.identity);
+            tronco.transform.rotation = Quaternion.Euler(0.0f,Random.Range(0.0f,90.0f), 90.0f);
         }
     }
 
