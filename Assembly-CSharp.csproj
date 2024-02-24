@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CuentaAtras.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Rotacion.cs" />
     <Compile Include="Assets\Scripts\JugadorBola.cs" />
   </ItemGroup>

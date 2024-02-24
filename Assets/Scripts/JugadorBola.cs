@@ -9,6 +9,7 @@ public class JugadorBola : MonoBehaviour
     
     public Camera camara;
     public GameObject suelo;
+    public GameObject bola;
     public float velocidad=5;
     public GameObject moneda;
     public GameObject tronco;
@@ -21,6 +22,8 @@ public class JugadorBola : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ValX=0.0F;
+        ValZ=0.0f;
         offset = camara.transform.position;
         CreateSueloInicial();
         DireccionActual = Vector3.forward;
@@ -45,6 +48,10 @@ public class JugadorBola : MonoBehaviour
         }
         transform.Translate(DireccionActual * velocidad * Time.deltaTime );
         
+        if(bola.transform.position.y < 0)
+        {
+            SceneManager.LoadScene("HasPerdido");
+        }
     }
 
     private void OnCollisionExit(Collision other){
@@ -57,7 +64,6 @@ public class JugadorBola : MonoBehaviour
 
     IEnumerator BorrarSuelo(GameObject suelo){
         float aleatorio = Random.Range(0.0f,1.0f);
-
         if(aleatorio > 0.5f)
         {
             ValX += 6.0f;
@@ -66,7 +72,7 @@ public class JugadorBola : MonoBehaviour
         {
             ValZ += 6.0f;
         }
-        Instantiate(suelo,new Vector3(ValX,0,ValZ),Quaternion.identity);
+        Instantiate(suelo,new Vector3(ValX,0.0f,ValZ),Quaternion.identity);
         yield return new WaitForSeconds(2);
         suelo.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         suelo.gameObject.GetComponent<Rigidbody>().useGravity = true;
@@ -74,17 +80,18 @@ public class JugadorBola : MonoBehaviour
         Destroy(suelo);
 
         float ran = Random.Range(0f,1f);
-        if(ran < 1f) //Cada suelo que se genera tiene un 70% de posibilidades de poseer una moneda
+        if(ran < 1f) //Cada suelo que se genera tiene un 100% de posibilidades de poseer una moneda
         {
             ran = Random.Range(-2f,2f);
-            Instantiate(moneda,new Vector3(ValX + ran,1.5f,ValZ + ran), Quaternion.identity);
+            Instantiate(moneda,new Vector3(ValX + ran,1.5f,ValZ + aleatorio), Quaternion.identity);
         }
         
         float ran2 =  Random.Range(0f,1f);
-        if(ran2 < 0.3f) //Cada suelo que se genera tiene un 30% de posibilidades de poseer una moneda
+        if(ran2 < 0.5f) //Cada suelo que se genera tiene un 50% de posibilidades de poseer un tronco
         { 
-            ran2 = Random.Range(-3f,3f);
-            Instantiate(tronco,new Vector3(ValX + ran2,0.5f,ValZ + ran2), Quaternion.identity);
+            ran2 = Random.Range(-2f,2f);
+            tronco = Instantiate(tronco,new Vector3(ValX + ran2,0.8f,ValZ + ran2), Quaternion.identity);
+            tronco.transform.rotation = Quaternion.Euler(0.0f,Random.Range(0.0f,90.0f), 90.0f);
         }
     }
 
@@ -92,27 +99,27 @@ public class JugadorBola : MonoBehaviour
     {
         if (DireccionActual == Vector3.forward)
         {
-            DireccionActual = Vector3.right;
+            DireccionActual =  Vector3.right;
         }
         else
         {
-            DireccionActual = Vector3.forward;
+            DireccionActual =  Vector3.forward;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.CompareTag("Premio"))
-       {
-        TotalMonedas++;
-        Contador.text = "Contador =" + TotalMonedas + "/7";
-        Destroy(other.gameObject);
-        if (TotalMonedas == 7)
+        if(other.gameObject.CompareTag("Premio"))
         {
-            SceneManager.LoadScene("2Nivel");
+        TotalMonedas++;
+        Contador.text = "Contador =" + TotalMonedas + "/5";
+        Destroy(other.gameObject);
+        if (TotalMonedas == 5)
+        {
+            SceneManager.LoadScene("Nivel2");
         }
-       }
-       if(other.gameObject.CompareTag("tronco"))
+        }
+        if(other.gameObject.CompareTag("tronco"))
         {
             Debug.Log("He chocado con un tronco");
             SceneManager.LoadScene("HasPerdido");
