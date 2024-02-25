@@ -64,10 +64,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\JugadorNivel1.cs" />
+    <Compile Include="Assets\Scripts\JugadorNivel2.cs" />
     <Compile Include="Assets\Scripts\CuentaAtras.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Rotacion.cs" />
-    <Compile Include="Assets\Scripts\JugadorBola.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DavePixel\ReadMe!.rtf.txt" />
