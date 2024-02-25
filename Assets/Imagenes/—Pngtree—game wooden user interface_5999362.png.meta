@@ -144,7 +144,7 @@ TextureImporter:
         width: 379
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,6 +152,48 @@ TextureImporter:
       bones: []
       spriteID: a01dfc6c3e972a64dafca0a844f6fb87
       internalID: 1742200452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Restart
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 98
+        width: 157
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d8960736fb84ec42b321f6d8782043f
+      internalID: 636854676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exit
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 114
+        width: 137
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d05194e5ef21544eaa010fe4ea96229
+      internalID: -1091690918
       vertices: []
       indices: 
       edges: []
@@ -167,7 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Exit: -1091690918
       PLAY: 1742200452
+      Restart: 636854676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
