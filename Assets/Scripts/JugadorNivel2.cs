@@ -13,6 +13,7 @@ public class JugadorNivel2 : MonoBehaviour
     public GameObject moneda;
     public GameObject tronco;
     public Text Contador;
+    public GameObject moneda2;
 
     private Vector3 offset;
     private float ValX, ValZ;
@@ -102,11 +103,18 @@ public class JugadorNivel2 : MonoBehaviour
         }
 
         float ran2 = Random.Range(0f, 1f);
-        if (ran2 < 0.7f) // Cada suelo que se genera tiene un 50% de posibilidades de poseer un tronco
+        if (ran2 < 0.7f) // Cada suelo que se genera tiene un 70% de posibilidades de poseer un tronco
         {
             ran2 = Random.Range(-2f, 2f);
             tronco = Instantiate(tronco, new Vector3(ValX + ran2, 0.8f, ValZ + ran2), Quaternion.identity);
             tronco.transform.rotation = Quaternion.Euler(0.0f, Random.Range(0.0f, 90.0f), 90.0f);
+        }
+
+        float ran3 = Random.Range(0f, 1f);
+        if (ran3 < 0.5f) // Cada suelo que se genera tiene un 50% de posibilidades de poseer una moneda
+        {
+            ran3 = Random.Range(-2f, 2f);
+            Instantiate(moneda2, new Vector3(ValX + ran, 1.5f, ValZ + aleatorio), Quaternion.identity);
         }
     }
 
@@ -139,5 +147,16 @@ public class JugadorNivel2 : MonoBehaviour
             Debug.Log("He chocado con un tronco");
             SceneManager.LoadScene("HasPerdido");
         }
+        if (other.gameObject.CompareTag("premio2"))
+        {
+            TotalMonedas += 2;
+            Contador.text = "Contador =" + TotalMonedas + "/10";
+            Destroy(other.gameObject);
+            if (TotalMonedas >= 10)
+            {
+                SceneManager.LoadScene("HasGanado");
+            }
+        }
     }
 }
+
