@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel2.unity
     guid: a74b6657666335848841ecb0282c575f
+  - enabled: 1
+    path: Assets/Scenes/HasGanado.unity
+    guid: ffd7057a71a963a4c82c4cdaf6c16953
   m_configObjects: {}
